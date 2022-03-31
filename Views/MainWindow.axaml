@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LabMileshko7.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:m="using:LabMileshko7.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+				Width="1200" Height="450"
+        MinHeight="120" MinWidth="900"
+        x:Class="LabMileshko7.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="LabMileshko7">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+
+
+  <Grid RowDefinitions="30,360*,30,30" ColumnDefinitions="16*,4*,4*,4*,4*,4*,4*,4*,6*,6*" ShowGridLines="False">
+
+    <DockPanel Grid.Row="0">
+      <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+        <MenuItem Header="File">
+          <MenuItem Name="Save" Header="Save"/>
+          <MenuItem Name="Load" Header="Load"/>
+          <MenuItem Name="Exit" Header="Exit"/>
+        </MenuItem>
+        <MenuItem Name="About" Header="About">
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+
+    <DataGrid Items="{Binding Notes}" CanUserResizeColumns="True" Grid.Row="1" Grid.ColumnSpan="10" Name="MyDataGrid1" AutoGenerateColumns="False" HorizontalAlignment="Stretch" >
+      <DataGrid.Columns>
+
+        <DataGridTextColumn Width="16*" Header="ФИО" Binding="{Binding Fio}"/>
+        <DataGridTextColumn Width="4*" Header="1" Binding="{Binding Grade1}"/>
+        <DataGridTextColumn Width="4*" Header="2" Binding="{Binding Grade2}"/>
+        <DataGridTextColumn Width="4*" Header="3" Binding="{Binding Grade3}"/>
+        <DataGridTextColumn Width="4*" Header="4" Binding="{Binding Grade4}"/>
+        <DataGridTextColumn Width="4*" Header="5" Binding="{Binding Grade5}"/>
+        <DataGridTextColumn Width="4*" Header="6" Binding="{Binding Grade6}"/>
+        <DataGridTextColumn Width="4*" Header="7" Binding="{Binding Grade7}"/>
+        <DataGridTemplateColumn Header="Ср. балл" IsReadOnly="True" Width="6*">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate DataType="m:Note">
+              <TextBox Background="{Binding MyBrush}" Text="{Binding Average}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Focusable="False"/>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+          <DataGridTemplateColumn.CellEditingTemplate>
+            <DataTemplate DataType="m:Note">
+              <TextBox Text="{Binding Average}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Focusable="False"/>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellEditingTemplate>
+        </DataGridTemplateColumn>
+
+
+
+        <DataGridCheckBoxColumn Width="6*" Binding="{Binding Check}" />
+      </DataGrid.Columns>
+
+    </DataGrid>
+    <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"  Text="{Binding Control1}" Background="{Binding Color1}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control2}" Background="{Binding Color2}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control3}" Background="{Binding Color3}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control4}" Background="{Binding Color4}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control5}" Background="{Binding Color5}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="6" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control6}" Background="{Binding Color6}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control7}" Background="{Binding Color7}" Focusable="False"/>
+    <TextBox Grid.Row="2" Grid.Column="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Text="{Binding Control8}" Background="{Binding Color8}" Focusable="False"/>
+    <Button Name="Add" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Content="Добавить"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center">
+      <Image Source="avares://LabMileshko7/Assets/add.ico"/>
+    </Button>
+    <Button Name="Delete" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="6" Content="Удалить" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center">
+      <Image Source="avares://LabMileshko7/Assets/trash.ico"/>
+    </Button>
+  </Grid>
+
+
+</Window>
