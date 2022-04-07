@@ -2,16 +2,13 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Lab7.Views
+namespace HW_7.Views
 {
-    public partial class About : Window
+    public partial class AboutView : Window
     {
-        public About()
+        public AboutView()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()
